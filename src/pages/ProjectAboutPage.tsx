@@ -35,7 +35,7 @@ function ProjectAboutPage() {
                 <div className="project__links-container">
                     <a
                         className="project__link"
-                        href="https://github.com/vecute"
+                        href="https://gleb-khramtsov-cv.netlify.app/"
                         target="_blank"
                     >
                         <svg width="110" height="110" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297 297" fill="#eeeeee" >
@@ -49,7 +49,7 @@ function ProjectAboutPage() {
                     </a>
                     <a
                         className="project__link"
-                        href="https://gleb-khramtsov-cv.netlify.app/"
+                        href="https://github.com/vecute"
                         target="_blank"
                     >
                         <svg width="110" height="110" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#eeeeee" >
