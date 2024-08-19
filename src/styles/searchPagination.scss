@@ -1,0 +1,52 @@
+.search-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+
+  li {
+    margin: 0 5px;
+    padding: 5px;
+    border: 1px solid var(--pagination-border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--pagination-font-color);
+    box-shadow: 0px 0px 2px 0px var(--main-shadow-color);
+    @media only screen and (max-width: 400px) {
+      font-size: 14px;
+      padding: 3px;
+    }
+    &.active {
+      background-color: var(--pagination-accent-color);
+      color: var(--pagination-font-active-color);
+      border: 1px solid var(--pagination-border-color);
+      &:hover {
+        color: var(--pagination-font-active-color);
+        border: 1px solid var(--pagination-border-hover-color);
+        background-color: var(--pagination-accent-color);
+        cursor: default;
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        border: 1px solid var(--pagination-border-hover-color);
+        color: var(--pagination-font-hover-color);
+        background-color: var(--pagination-background-hover-color);
+      }
+    }
+
+    &.search-pagination__ellipsis {
+      cursor: default;
+
+      &:hover {
+        background-color: transparent;
+        border: 1px solid var(--pagination-border-color);
+        color: var(--pagination-font-color);
+      }
+    }
+  }
+}

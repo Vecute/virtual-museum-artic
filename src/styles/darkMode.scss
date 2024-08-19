@@ -1,0 +1,107 @@
+:root {
+  --departments-background-color: #00000093;
+  --departments-font-title-color: #eeeeee;
+  --departments-hover-color: #ffffff;
+  --departments-hover-title-color: #444444;
+  --template-font-color: #444444;
+  --font-color: #eeeeee;
+  --about-background-color: #00000093;
+  --header-background-color: #00000093;
+  --header-main-background-color: #00000093;
+  --header-hover-color: #ffffff;
+  --header-border-color: #ffffff;
+  --header-caret-color: #444444;
+  --footer-font-color: #444444;
+  --footer-main-font-color: #ffffff;
+  --link-color: #444444;
+  --icon-accent-color: #ffc10a;
+  --icon-color: #ffffff;
+  --object-background-color: #00000093;
+  --object-credit-font-color: #444444;
+  --modal-image-border-color: #eeeeee;
+  --modal-image-icon-color: #eeeeee;
+  --modal-image-icon-hover-color: #6495ed;
+  --modal-image-button-color: #333333;
+  --modal-image-button-hover-color: #ffffff;
+  --modal-image-background-color: #000000bb;
+  --main-background-color: #00000044;
+  --main-button-color: #ffffff;
+  --main-button-hover-color: #ffffff2c;
+  --main-button-control-color: #ffffff71;
+  --spinner-circle-color: #333333;
+  --spinner-highlighter: #eeeeee;
+  --pagination-border-color: #444444;
+  --pagination-accent-color: #00000093;
+  --pagination-font-hover-color: #444444;
+  --pagination-border-hover-color: #444444;
+  --pagination-background-hover-color: #ffffff71;
+  --pagination-font-color: #444444;
+  --pagination-font-active-color: #eeeeee;
+  --filters-color: #444444;
+  --filters-font-color: #444444;
+  --filters-background-color: #00000093;
+  --filters-caret-color: #444444;
+  --main-shadow-color: #000000;
+  --secondary-shadow-color: #00000077;
+  --main-home-shadow-color: #000000;
+  --search-font-color: #444444;
+  --button-background-color: #00000093;
+  --button-border-color: #00000093;
+  --button-font-hover-color: #444444;
+  --random-title-color: #444444;
+  --project-font-color: #eeeeee;
+  --project-link-hover-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --departments-background-color: #ffffff23;
+  --departments-font-title-color: #eeeeee;
+  --departments-hover-color: #ffffff;
+  --departments-hover-title-color: #444444;
+  --template-font-color: #eeeeee;
+  --font-color: #eeeeee;
+  --about-background-color: #ffffff23;
+  --header-background-color: #ffffff23;
+  --footer-font-color: #eeeeee;
+  --object-background-color: #ffffff23;
+  --object-credit-font-color: #eeeeee;
+  --spinner-circle-color: #333333;
+  --pagination-border-color: #eeeeee;
+  --pagination-accent-color: #5e5e5e;
+  --pagination-font-hover-color: #eeeeee;
+  --pagination-border-hover-color: #eeeeee;
+  --pagination-background-hover-color: #ffffff23;
+  --pagination-font-color: #eeeeee;
+  --pagination-font-active-color: #eeeeee;
+  --filters-color: #eeeeee;
+  --filters-font-color: #eeeeee;
+  --filters-background-color: #ffffff23;
+  --main-shadow-color: #3a3939c4;
+  --secondary-shadow-color: #3a393957;
+  --filters-font-input-color: #000000;
+  --search-font-color: #eeeeee;
+  --button-background-color: #ffffff23;
+  --button-border-color: #ffffff23;
+  --button-font-hover-color: #eeeeee;
+  --random-title-color: #eeeeee;
+  --project-font-color: #eeeeee;
+}
+
+.theme-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  @media (hover: hover) {
+    &:hover svg {
+      fill: var(--icon-accent-color);
+      transition: all 0.3s linear;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    margin-right: 25px;
+  }
+}
