@@ -13,7 +13,6 @@ const Footer = () => {
         <p className="footer__info" onClick={() => {
             navigate("/project-about");
           }}>Project info</p>
-        <p className="footer__text footer__info">All rights reserved</p>
       </div>
     </footer>
   );

@@ -1,24 +1,25 @@
 .footer {
+  color: var(--footer-font-color);
+
+  &__container {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+  }
+
+  &__home {
     color: var(--footer-font-color);
-    &__container {
-      display: grid;
-      padding: 10px;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: center;
-    }
-    &__home {
-      color: var(--footer-font-color);
-    }
-    &__info {
-      cursor: pointer;
-      text-align: center;
-      @media (hover: hover) {
-        &:hover {
-          color: var(--project-link-hover-color);;
-        }
+  }
+
+  &__info {
+    cursor: pointer;
+    text-align: center;
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--project-link-hover-color);
+        ;
       }
     }
-    &__text {
-      text-align: end;
-    }
   }
+}
