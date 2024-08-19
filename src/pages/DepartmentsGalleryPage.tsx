@@ -63,12 +63,13 @@ function DepartmentsGalleryPage() {
           ))}
         </div>
       )}
-      <button
+      {!isLoading && (<button
         className="back-button back-button__departments"
         onClick={handleGoBack}
       >
         Go back
       </button>
+      )}
     </TemplatePage>
   );
 }
