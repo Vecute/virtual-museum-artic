@@ -1,14 +1,11 @@
 import React from "react";
 import "../styles/searchPagination.scss";
 
-// Определяем интерфейс для пропсов компонента пагинации
 interface PaginationProps {
-  // Общее количество страниц
-  totalPages: number;
-  // Текущая страница
-  currentPage: number;
-  // Функция обратного вызова, которая будет вызываться при изменении страницы
-  onPageChange: (page: number) => void;
+  // Определяем интерфейс для пропсов компонента пагинации
+  totalPages: number; // Общее количество страниц
+  currentPage: number; // Текущая страница
+  onPageChange: (page: number) => void; // Функция обратного вызова, которая будет вызываться при изменении страницы
 }
 
 // Компонент пагинации

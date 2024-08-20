@@ -1,29 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Определяем тип для начального состояния редюсера
 type InitialStateType = {
-  // selectedImage: Строка, содержащая URL выбранного изображения, или null, если изображение не выбрано
-  selectedImage: string | null;
+  // Определяем тип для начального состояния редюсера
+  selectedImage: string | null; // Строка, содержащая URL выбранного изображения, или null, если изображение не выбрано
 };
 
 // Определяем начальное состояние редюсера
 const initialState: InitialStateType = {
-  // Изначально изображение не выбрано
-  selectedImage: null,
+  selectedImage: null, // Изначально изображение не выбрано
 };
 
-// Создаем редюсер imagePopUpReducer с помощью createSlice
+// Создаем редюсер imagePopUpReducer
 const imagePopUpReducer = createSlice({
-  // name: Название редюсера, используется для генерации имен экшенов
-  name: "imagePopUp",
-  // initialState: Начальное состояние редюсера
-  initialState,
-  // reducers: Объект, содержащий функции-редюсеры для обработки синхронных экшенов.
+  name: "imagePopUp", // Название редюсера, используется для генерации имен экшенов
+  initialState, // Начальное состояние редюсера
   reducers: {
-    // Редюсер для установки выбранного изображения
+    // Объект, содержащий функции-редюсеры для обработки синхронных экшенов
     setSelectedImage: (state, action) => {
-      // Записываем URL выбранного изображения из action.payload в state.selectedImage
-      state.selectedImage = action.payload;
+      // Редюсер для установки выбранного изображения
+      state.selectedImage = action.payload; // Записываем URL выбранного изображения из action.payload в state.selectedImage
     },
   },
 });

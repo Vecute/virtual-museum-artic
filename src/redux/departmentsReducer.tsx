@@ -1,57 +1,41 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { Department, fetchDepartments } from '../thunk/fetchDepartments';
+import { createSlice } from "@reduxjs/toolkit";
+import { Department, fetchDepartments } from "../thunk/fetchDepartments";
 
 // Определяем тип для начального состояния редюсера
 type InitialStateType = {
-  // departments: Массив объектов типа Department, содержащий информацию о департаментах
-  departments: Department[];
-  // isLoading: Булево значение, указывающее, загружаются ли данные в данный момент
-  isLoading: boolean;
-  // error: Строка, содержащая сообщение об ошибке, если таковая возникла при загрузке данных
-  error: string | null;
+  departments: Department[]; // Массив объектов типа Department, содержащий информацию о департаментах
+  isLoading: boolean; // Булево значение, указывающее, загружаются ли данные в данный момент
+  error: string | null; // Строка, содержащая сообщение об ошибке, если таковая возникла при загрузке данных
 };
 
 // Определяем начальное состояние редюсера
 const initialState: InitialStateType = {
-  // Изначально массив departments пуст
-  departments: [],
-  // По умолчанию данные не загружаются
-  isLoading: false,
-  // Сообщение об ошибке отсутствует
-  error: null,
+  departments: [], // Изначально массив departments пуст
+  isLoading: false, // По умолчанию данные не загружаются
+  error: null, // Сообщение об ошибке отсутствует
 };
 
-// Создаем редюсер departmentsSlice с помощью createSlice
+// Создаем редюсер
 const departmentsSlice = createSlice({
-  // name: Название редюсера, используется для генерации имен экшенов
-  name: 'departments',
-  // initialState: Начальное состояние редюсера
-  initialState,
-  // reducers: Объект, содержащий функции-редюсеры для обработки синхронных экшенов.
-  // В данном случае редюсер не обрабатывает синхронные экшены
-  reducers: {},
-  // extraReducers: Функция, принимающая объект builder и позволяющая добавлять обработчики для асинхронных экшенов
+  name: "departments", // Название редюсера
+  initialState, // Начальное состояние редюсера
+  reducers: {}, // В данном случае редюсер не обрабатывает синхронные экшены
   extraReducers: (builder) => {
-    // Добавляем обработчики для разных состояний асинхронной функции fetchDepartments
+    // Функция, принимающая объект builder и позволяющая добавлять обработчики для асинхронных экшенов
     builder
-      // Обработчик для состояния pending (загрузка данных)
       .addCase(fetchDepartments.pending, (state) => {
-        // Устанавливаем isLoading в true, чтобы показать, что данные загружаются
-        state.isLoading = true;
+        // Обработчик для состояния pending (загрузка данных)
+        state.isLoading = true; // Устанавливаем isLoading в true, чтобы показать, что данные загружаются
       })
-      // Обработчик для состояния fulfilled (успешная загрузка данных)
       .addCase(fetchDepartments.fulfilled, (state, action) => {
-        // Записываем полученные данные в state.departments
-        state.departments = action.payload;
-        // Устанавливаем isLoading в false, поскольку загрузка завершена
-        state.isLoading = false;
+        // Обработчик для состояния fulfilled (успешная загрузка данных)
+        state.departments = action.payload; // Записываем полученные данные в state.departments
+        state.isLoading = false; // Устанавливаем isLoading в false, поскольку загрузка завершена
       })
-      // Обработчик для состояния rejected (ошибка при загрузке данных)
       .addCase(fetchDepartments.rejected, (state, action) => {
-        // Устанавливаем isLoading в false, поскольку загрузка завершена (с ошибкой)
-        state.isLoading = false;
-        // Записываем сообщение об ошибке в state.error
-        state.error = action.error.message || 'Что-то пошло не так';
+        // Обработчик для состояния rejected (ошибка при загрузке данных)
+        state.isLoading = false; // Устанавливаем isLoading в false, поскольку загрузка завершена (с ошибкой)
+        state.error = action.error.message || "Something went wrong"; // Записываем сообщение об ошибке в state.error
       });
   },
 });

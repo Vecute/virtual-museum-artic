@@ -1,37 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Определяем константу для названия темной темы
-const darkTheme = "dark";
-// Получаем сохраненную тему из localStorage
-const storedTheme = localStorage.getItem("theme");
-// Проверяем, предпочитает ли пользователь темную тему, используя window.matchMedia
+const darkTheme = "dark"; // Определяем константу для названия темной темы
+const storedTheme = localStorage.getItem("theme"); // Получаем сохраненную тему из localStorage
 const prefersDark =
-  window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
-// Определяем начальную тему: если есть сохраненная тема, используем ее, иначе - предпочтения пользователя
-const initialTheme = storedTheme ? storedTheme === darkTheme : prefersDark;
+  window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false; // Проверяем, предпочитает ли пользователь темную тему, используя window.matchMedia
+const initialTheme = storedTheme ? storedTheme === darkTheme : prefersDark; // Определяем начальную тему: если есть сохраненная тема, используем ее, иначе - предпочтения пользователя
 
 // Определяем тип для начального состояния редюсера
 type InitialStateType = {
-  // darkMode: Булево значение, указывающее, включена ли темная тема
-  darkMode: boolean;
+  darkMode: boolean; // Булево значение, указывающее, включена ли темная тема
 };
-// Определяем начальное состояние редюсера, используя определенную ранее начальную тему
+
 const initialState: InitialStateType = {
+  // Определяем начальное состояние редюсера, используя определенную ранее начальную тему
   darkMode: initialTheme,
 };
 
-// Создаем редюсер themeReducer с помощью createSlice
+// Создаем редюсер themeReducer
 const themeReducer = createSlice({
-  // name: Название редюсера, используется для генерации имен экшенов
-  name: "theme",
-  // initialState: Начальное состояние редюсера
-  initialState,
-  // reducers: Объект, содержащий функции-редюсеры для обработки синхронных экшенов
+  name: "theme", // Название редюсера, используется для генерации имен экшенов
+  initialState, // Начальное состояние редюсера
   reducers: {
-    // Редюсер для переключения темы
+    // Объект, содержащий функции-редюсеры для обработки синхронных экшенов
     toggleTheme: (state) => {
-      // Инвертируем значение darkMode, переключая тему на противоположную.
-      state.darkMode = !state.darkMode;
+      // Редюсер для переключения темы
+      state.darkMode = !state.darkMode; // Инвертируем значение darkMode, переключая тему на противоположную
     },
   },
 });
