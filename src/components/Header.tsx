@@ -161,7 +161,7 @@ const Header = () => {
             <li className="header__list-item">
               <a
                 className={`header__link ${
-                  location.pathname === "/random" ? "header__link-home" : ""
+                  location.pathname === "/home" ? "header__link-home" : ""
                 }`}
                 onClick={() => {
                   setIsBurgerVisible(false);
