@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { act } from 'react';
 
 // Базовый URL API музея
 const API_BASE_URL = "https://api.artic.edu/api/v1/artworks/search";
@@ -31,7 +32,7 @@ const useFetchArtworks = (
   const [totalPages, setTotalPages] = useState(1);
 
   // Реф для хранения ID таймера задержки
-  const delayTimer = useRef<number | null>(null);
+  const delayTimer = useRef<NodeJS.Timeout | null>(null);
   // Реф для отслеживания первого рендеринга
   const isFirstRender = useRef(true);
 
@@ -105,15 +106,17 @@ const useFetchArtworks = (
 
       // Парсим ответ от API
       const data = await response.json();
+
       // Обновляем состояние с результатами поиска
-      setResults(data.data);
-      // Обновляем состояние с общим количеством страниц
-      setTotalPages(data.pagination.total_pages);
+      act(() => { // Функция act используется для оборачивания кода, который обновляет состояние компонента React. Это гарантирует, что все обновления состояния будут обработаны React синхронно и перед выполнением следующих проверок в тесте
+        setResults(data.data);
+        // Обновляем состояние с общим количеством страниц
+        setTotalPages(data.pagination.total_pages);
+        setIsLoading(false); // Сбрасываем состояние загрузки
+      });
     } catch (error) {
       console.error("Ошибка при получении данных:", error);
-    } finally {
-      setIsLoading(false); // Сбрасываем состояние загрузки
-    }
+    } 
   }, [buildApiUrl]);
 
   // Хук useEffect для выполнения запроса при монтировании компонента и при изменении значений фильтров
