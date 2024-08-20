@@ -29,7 +29,8 @@
   margin-top: 55px;
 }
 
-.background-image {
+.background-image:before {
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
@@ -40,10 +41,10 @@
   z-index: -1;
 }
 
-.light {
+.light:before {
   background-image: url("/images/light-background.jpg");
 }
 
-.dark {
+.dark:before {
   background-image: url("/images/dark-background.jpg");
 }
