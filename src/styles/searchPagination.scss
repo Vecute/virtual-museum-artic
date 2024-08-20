@@ -42,10 +42,12 @@
     &.search-pagination__ellipsis {
       cursor: default;
 
-      &:hover {
-        background-color: transparent;
-        border: 1px solid var(--pagination-border-color);
-        color: var(--pagination-font-color);
+      @media (hover: hover) {
+        &:hover {
+          background-color: transparent;
+          border: 1px solid var(--pagination-border-color);
+          color: var(--pagination-font-color);
+        }
       }
     }
   }

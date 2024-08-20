@@ -69,8 +69,10 @@
     border: 1px solid transparent;
     border-radius: 5px;
 
-    &:hover {
-      border: 1px solid var(--modal-image-button-hover-color);
+    @media (hover: hover) {
+      &:hover {
+        border: 1px solid var(--modal-image-button-hover-color);
+      }
     }
 
     &:before {

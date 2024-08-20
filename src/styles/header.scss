@@ -183,6 +183,11 @@
         background-color: var(--header-main-background-color);
       }
     }
+    @media (hover: hover) {
+      &:hover {
+        border: 1px solid var(--header-hover-color);
+      }
+    }
 
     &:hover {
       border: 1px solid var(--header-hover-color);
