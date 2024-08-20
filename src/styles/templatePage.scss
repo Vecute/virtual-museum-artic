@@ -37,7 +37,8 @@
   height: 100%;
   z-index: -1;
   background-image: url("/images/light-background.jpg");
-  background-attachment: fixed;
+  background-repeat: repeat; /* Повторяем изображение по горизонтали и вертикали */
+  background-attachment: fixed; /* Фиксируем фон */
 }
 
 
