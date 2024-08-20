@@ -37,7 +37,7 @@
   height: 100%;
   z-index: -1;
   background-image: url("/images/light-background.jpg");
-  transform: translate3d(0,0,0);
+  background-attachment: fixed;
 }
 
 
