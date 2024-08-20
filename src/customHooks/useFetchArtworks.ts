@@ -1,5 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import { act } from 'react';
+import { useState, useEffect, useCallback, useRef, act } from "react";
 
 // Базовый URL API музея
 const API_BASE_URL = "https://api.artic.edu/api/v1/artworks/search";
@@ -53,11 +52,11 @@ const useFetchArtworks = (
     const filter = [];
     if (searchTerm) {
       // Фильтр по поисковому запросу (поиск по названию)
-      filter.push({ match: { title: searchTerm } }); 
+      filter.push({ match: { title: searchTerm } });
     }
     if (departmentFilter) {
       // Фильтр по департаменту
-      filter.push({ term: { department_id: departmentFilter } }); 
+      filter.push({ term: { department_id: departmentFilter } });
     }
     if (placeOfOriginFilter) {
       // Фильтр по месту происхождения
@@ -106,17 +105,22 @@ const useFetchArtworks = (
 
       // Парсим ответ от API
       const data = await response.json();
-
-      // Обновляем состояние с результатами поиска
-      act(() => { // Функция act используется для оборачивания кода, который обновляет состояние компонента React. Это гарантирует, что все обновления состояния будут обработаны React синхронно и перед выполнением следующих проверок в тесте
-        setResults(data.data);
-        // Обновляем состояние с общим количеством страниц
-        setTotalPages(data.pagination.total_pages);
+      // Оборачиваем обновления состояния в act только в тестовом окружении:
+      if (process.env.NODE_ENV === "test") {
+        act(() => {
+          setResults(data.data); // Обновляем состояние с результатами поиска
+          setTotalPages(data.pagination.total_pages); // Обновляем состояние с общим количеством страниц
+          setIsLoading(false); // Сбрасываем состояние загрузки
+        });
+      } else {
+        // В production-коде act не нужен:
+        setResults(data.data); // Обновляем состояние с результатами поиска
+        setTotalPages(data.pagination.total_pages); // Обновляем состояние с общим количеством страниц
         setIsLoading(false); // Сбрасываем состояние загрузки
-      });
+      }
     } catch (error) {
       console.error("Ошибка при получении данных:", error);
-    } 
+    }
   }, [buildApiUrl]);
 
   // Хук useEffect для выполнения запроса при монтировании компонента и при изменении значений фильтров
@@ -144,8 +148,15 @@ const useFetchArtworks = (
         clearTimeout(delayTimer.current);
       }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm, departmentFilter, placeOfOriginFilter, dateStartFilter, dateEndFilter, currentPage]); 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    searchTerm,
+    departmentFilter,
+    placeOfOriginFilter,
+    dateStartFilter,
+    dateEndFilter,
+    currentPage,
+  ]);
 
   // Возвращаем результаты поиска, состояние загрузки и общее количество страниц
   return { results, isLoading, totalPages };
